@@ -1,0 +1,88 @@
+PUT post-comments
+{
+  "mappings": {
+    "properties": {
+      "_join_type": {
+        "type": "join",
+        "relations": {
+          "post": "comment"
+        }
+      }
+    }
+  }
+}
+
+PUT post-comments/_doc/1
+{
+"_join_type": {
+    "name": "post"
+  },
+"post_title" : "Angel Has Fallen"
+}
+
+PUT post-comments/_doc/2
+{
+"_join_type": {
+    "name": "post"
+  },
+"post_title" : "Beauty and the beast - a nice movie"
+}
+
+PUT post-comments/_doc/A?routing=1
+{
+"_join_type": {
+"name": "comment",
+"parent": "1"
+},
+"comment_author": "Neil Soans",
+"comment_description": "'Angel has Fallen' has some redeeming qualities, but they're too few and far in between to justify its existence"
+}
+
+PUT post-comments/_doc/C?routing=2
+{
+"_join_type": {
+"name": "comment",
+"parent": "2"
+},
+"comment_author": "Emma Cochrane",
+"comment_description": "There's the sublime beauty of a forgotten world and the promise of happily-ever-after to draw you to one of your favourite fairy tales, once again. Give it an encore."
+}
+
+PUT post-comments/_doc/D?routing=2
+{
+"_join_type": {
+"name": "comment",
+"parent": "2"
+},
+"comment_author": "Common Sense Media Editors",
+"comment_description": "Stellar music, brisk storytelling, delightful animation, and compelling characters make this both a great animated feature for kids and a great movie for anyone"
+}
+
+POST /post-comments/_search
+{
+  "query": {
+    "has_child": {
+      "query": {
+        "match": {
+          "comment_description": "music"
+        }
+      },
+      "type": "comment"
+    }
+  }
+}
+
+POST /post-comments/_search
+{
+  "query": {
+    "has_parent": {
+      "parent_type": "post",
+      "query": {
+        "match": {
+          "post_title": "Beauty"
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,13 @@
+POST /post-comments/_search
+{
+  "suggest": {
+    "description-suggest": {
+      "text": "storytdellings",
+      "term": {
+        "field": "comment_description",
+        "suggest_mode": "always",
+        "min_word_length": 1
+      }
+    }
+  }
+}

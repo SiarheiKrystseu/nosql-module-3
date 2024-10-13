@@ -1,0 +1,119 @@
+
+POST /employees/_search/
+{
+  "query": {
+    "match": {
+      "description": "motivated"
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "match": {
+      "description": {
+        "query": "highly motivated",
+        "operator": "AND"
+      }
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "Python",
+      "fields": ["skills", "description"]
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "term": {
+      "name.keyword": {
+        "value": "Stepanie Spain"
+      }
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "match": {
+      "name": "Stepanie"
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "terms": {
+      "name.keyword": [
+        "Stepanie Spain",
+        "Brandon Behrens",
+        "Carey Catlett"
+      ]
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "range": {
+      "experience": {
+        "gte": 5,
+        "lte": 20
+      }
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "range": {
+      "dob": {
+        "gt": "2000-01-01"
+      }
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "wildcard": {
+      "address.town": {
+        "value": "b*y"
+      }
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "regexp": {
+      "address.town.keyword": "Batley"
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "query": {
+    "fuzzy": {
+      "address.town": {
+        "value": "Bately",
+        "fuzziness": "2"
+      }
+    }
+  }
+}
