@@ -1,0 +1,23 @@
+GET http://localhost:9200/_cluster/health
+
+GET http://localhost:9200/_cluster/stats
+
+POST http://localhost:9200/employees/_bulk
+{JSON}
+
+POST http://localhost:9200/employees/_search
+
+GET http://localhost:9200/employees/_doc/{id}
+
+POST http://localhost:9200/employees/_doc/
+
+http://localhost:9200/employees/_mapping
+
+POST http://localhost:9200/employees/_update/{id}
+{
+  "doc": {
+    "skills": ["Scala", "AZURE", "Python"]
+  }
+}
+
+DELETE http://localhost:9200/employees/_doc/{id}
