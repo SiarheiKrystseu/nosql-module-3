@@ -1,0 +1,95 @@
+POST /employees/_search
+{
+  "size": 0,
+  "aggs": {
+    "skills_count": {
+      "terms": {
+        "field": "skills.keyword",
+        "size": 10
+      }
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "filter": {
+        "term": {
+          "verified": true
+        }
+      }
+    }
+  },
+  "aggs": {
+    "skills_count": {
+      "terms": {
+        "field": "skills.keyword",
+        "size": 10
+      }
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "filter": {
+        "term": {
+          "verified": true
+        }
+      }
+    }
+  },
+  "aggs": {
+    "skills_count": {
+      "terms": {
+        "field": "skills.keyword",
+        "size": 10
+      },
+      "aggs": {
+        "average_rating": {
+          "avg": {
+            "field": "rating"
+          }
+        }
+      }
+    }
+  }
+}
+
+POST /employees/_search
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "filter": {
+        "term": {
+          "verified": true
+        }
+      }
+    }
+  },
+  "aggs": {
+    "skills_count": {
+      "terms": {
+        "field": "skills.keyword",
+        "size": 10,
+        "order": {
+          "rating_stats.avg": "desc"
+        }
+      },
+      "aggs": {
+        "rating_stats": {
+          "stats": {
+            "field": "rating"
+          }
+        }
+      }
+    }
+  }
+}
