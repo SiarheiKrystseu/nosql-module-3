@@ -1,4 +1,4 @@
-package com.epam.krystseu.java_low_level_rest_client.client;
+package com.epam.krystseu.java_api_client.client;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.Request;

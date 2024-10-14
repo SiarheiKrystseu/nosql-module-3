@@ -1,8 +1,8 @@
-package com.epam.krystseu.java_low_level_rest_client.service.impl;
+package com.epam.krystseu.java_api_client.service.impl;
 
-import com.epam.krystseu.java_low_level_rest_client.client.CustomElasticsearchClient;
-import com.epam.krystseu.java_low_level_rest_client.dto.Employee;
-import com.epam.krystseu.java_low_level_rest_client.service.EmployeeService;
+import com.epam.krystseu.java_api_client.client.CustomElasticsearchClient;
+import com.epam.krystseu.java_api_client.dto.Employee;
+import com.epam.krystseu.java_api_client.service.EmployeeService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

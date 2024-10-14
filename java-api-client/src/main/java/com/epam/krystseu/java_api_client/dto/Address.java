@@ -1,4 +1,4 @@
-package com.epam.krystseu.java_low_level_rest_client.dto;
+package com.epam.krystseu.java_api_client.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
