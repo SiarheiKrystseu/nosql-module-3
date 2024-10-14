@@ -1,6 +1,6 @@
-package com.epam.krystseu.java_low_level_rest_client.service;
+package com.epam.krystseu.java_api_client.service;
 
-import com.epam.krystseu.java_low_level_rest_client.dto.Employee;
+import com.epam.krystseu.java_api_client.dto.Employee;
 
 import java.io.IOException;
 
@@ -10,5 +10,5 @@ public interface EmployeeService {
     void createEmployee(String id, Employee employee) throws IOException;
     void deleteEmployeeById(String id) throws IOException;
     Employee[] searchEmployees(String fieldName, String fieldValue) throws IOException;
-    Object performAggregation(String field, String metricType, String metricField) throws IOException;
+    Object performAggregation(String field, String filterField, Object filterValue, int size) throws IOException;
 }
